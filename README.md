@@ -24,4 +24,4 @@
 
 ## Link for the video about project
 
-### https://drive.google.com/file/d/1goj7TmN1rewnPJyswEOrJhO_i6UF91ZC
+### https://drive.google.com/file/d/1qk47Afrn_4t57IJWVeaLng9M5kUOwUpI
