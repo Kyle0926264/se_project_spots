@@ -1,10 +1,12 @@
 .card {
-  max-width: 413px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .card__image {
-  height: 413px;
-  width: 413px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
 }
@@ -14,6 +16,9 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .card__content {
@@ -33,24 +38,34 @@
 }
 
 @media screen and (max-width: 628px) {
-  .card__image {
-    height: 288px;
-    width: 288px;
+  .card {
+    max-width: 288px; /* Restrict card width to avoid overflow */
   }
 
-  .card__content {
-    margin: 12px 0 20px;
+  .card__image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 
   .card__title {
     font-size: 16px;
-    line-height: 16px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-clamp: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    max-width: 288px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    padding: 0 16px; /* Align to container padding */
+  }
+
+  .card__image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .card__title {
+    max-width: 100%;
   }
 }
