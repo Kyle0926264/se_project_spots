@@ -1,14 +1,14 @@
 .card {
-  width: 100%;
-  max-width: 100%;
+  width: 413px;
   margin: 0 auto;
 }
 
 .card__image {
   width: 100%;
-  height: auto;
+  height: 413px;
   object-fit: cover;
   display: block;
+  border-radius: 8px;
 }
 
 .card__title {
@@ -35,15 +35,17 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 628px) {
   .card {
-    max-width: 288px; /* Restrict card width to avoid overflow */
+    max-width: 100%;
+    width: 288px;
+    margin-bottom: 20px;
   }
 
   .card__image {
-    width: 100%;
     max-width: 100%;
     height: auto;
   }
@@ -51,18 +53,20 @@
   .card__title {
     font-size: 16px;
     line-height: 1.5;
+    max-width: 100%;
   }
 }
 
 @media screen and (max-width: 375px) {
   .card {
-    padding: 0 16px; /* Align to container padding */
+    max-width: 100%;
+    padding: 0 16px;
   }
 
   .card__image {
-    width: 100%;
+    width: 288px;
     max-width: 100%;
-    height: auto;
+    height: 318px;
   }
 
   .card__title {

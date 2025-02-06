@@ -58,6 +58,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
+  cursor: pointer;
 }
 
 .profile__image-margin {
@@ -75,6 +76,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 628px) {
@@ -123,6 +125,7 @@
 @media screen and (max-width: 375px) {
   .profile {
     max-width: calc(100% - 32px);
+    margin: 0 auto;
   }
 
   .profile__name,
