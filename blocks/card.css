@@ -41,7 +41,7 @@
 }
 
 .card__like-button:hover {
-  color: #212121;
+  opacity: 1;
 }
 
 @media screen and (max-width: 628px) {

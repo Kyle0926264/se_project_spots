@@ -59,11 +59,11 @@
   font-weight: 500;
   line-height: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .profile__edit-btn:hover {
-  color: #212121;
+  opacity: 1;
 }
 
 .profile__image-margin {
@@ -86,7 +86,7 @@
 }
 
 .profile__add-btn:hover {
-  background-color: rgba(33, 33, 33, 0.8);
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 628px) {
