@@ -58,12 +58,14 @@
       </footer>
       <div class="modal" id="edit-modal">
         <div class="modal__container">
-          <button
-            type="button"
-            class="modal__close-btn"
-            id="edit__modal_close-btn"
-          ></button>
-          <h2 class="modal__title">Edit profile</h2>
+          <div class="modal__header">
+            <h2 class="modal__title">Edit profile</h2>
+            <button
+              type="button"
+              class="edit__modal_close-btn"
+              id="edit__modal_close-btn"
+            ></button>
+          </div>
           <form name="edit-profile" class="modal__form" id="edit-modal-form">
             <label for="profile-name-input" class="modal__label">
               Name
@@ -85,8 +87,8 @@
             </label>
             <button
               type="submit"
-              class="modal__submit-btn"
-              id="edit__modal-submit-btn"
+              class="edit__modal_submit-btn"
+              id="edit__modal_submit-btn"
             >
               Save
             </button>
