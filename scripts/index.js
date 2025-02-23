@@ -28,8 +28,34 @@ const intialCards = [
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const editModal = document.querySelector("#edit-modal");
 const editModalCloseBtn = document.querySelector("#edit__modal_close-btn");
+const profileName = document.querySelector(".profile__name");
+const editModalNameInput = document.querySelector("#profile-name-input");
+const profileDescription = document.querySelector(".profile__description");
+const editModalDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+const editFormElement = document.querySelector("#edit-modal-form");
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+
+  const cardNameEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardNameEl.textContent = data.name;
+  cardImageEl.src = data.link; // Set the image source dynamically
+  cardImageEl.alt = data.name; // Set alt text for accessibility
+
+  return cardElement;
+}
 
 function openModal() {
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent;
   editModal.classList.add("modal__opened");
 }
 
@@ -37,5 +63,18 @@ function closeModal() {
   editModal.classList.remove("modal__opened");
 }
 
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = editModalNameInput.value;
+  profileDescription.textContent = editModalDescriptionInput.value;
+  closeModal();
+}
+
 profileEditButton.addEventListener("click", openModal);
-editModalCloseBtn.addEventListener("click", closeModal); // Close modal when close button is clicked
+editModalCloseBtn.addEventListener("click", closeModal);
+editFormElement.addEventListener("submit", handleEditFormSubmit);
+
+for (let i = 0; i < intialCards.length; i++) {
+  const cardElement = getCardElement(intialCards[i]);
+  cardsList.append(cardElement);
+}
