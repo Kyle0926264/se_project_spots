@@ -41,6 +41,7 @@
   opacity: 40%;
   cursor: pointer;
   transition: 0.3s;
+  background-repeat: no-repeat;
 }
 
 .card__like-button:hover {
