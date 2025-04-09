@@ -3,6 +3,7 @@
   min-height: 100vh;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 .page__section {
