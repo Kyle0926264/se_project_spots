@@ -49,6 +49,8 @@
 
 .modal__image {
   border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .modal__header {
