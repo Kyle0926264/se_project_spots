@@ -66,7 +66,6 @@ function getCardElement(data) {
   });
 
   cardImageEl.addEventListener("click", () => {
-    previewModal.classList.add("modal_opened");
     previewImage.src = data.link;
     previewImage.alt = data.name;
     previewCaption.textContent = data.name;
@@ -78,10 +77,6 @@ function getCardElement(data) {
 
 function openPopup(popup) {
   popup.classList.add("modal_opened");
-  if (popup === editModal) {
-    editModalNameInput.value = profileName.textContent;
-    editModalDescriptionInput.value = profileDescription.textContent;
-  }
 }
 
 function closePopup(popup) {
@@ -105,7 +100,10 @@ function handleAddCardSubmit(evt) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  editModal.classList.add("modal_opened");
+  if (popup === editModal) {
+    editModalNameInput.value = profileName.textContent;
+    editModalDescriptionInput.value = profileDescription.textContent;
+  }
   openPopup(editModal);
 });
 
