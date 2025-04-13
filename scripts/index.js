@@ -100,11 +100,9 @@ function handleAddCardSubmit(evt) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  if (popup === editModal) {
-    editModalNameInput.value = profileName.textContent;
-    editModalDescriptionInput.value = profileDescription.textContent;
-  }
   openPopup(editModal);
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent;
 });
 
 closeButtons.forEach((button) => {
