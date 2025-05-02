@@ -71,20 +71,28 @@
             <label for="profile-name-input" class="modal__label">
               Name
               <input
+                required
+                minlength="2"
+                maxlength="40"
                 id="profile-name-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
               />
+              <span id="profile-name-input-error" class="modal__error"></span>
             </label>
             <label for="profile-description-input" class="modal__label">
               Description
               <input
+                required
+                minlength="2"
+                maxlength="200"
                 id="profile-description-input"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
               />
+              <span id="profile-description-input-error" class="modal__error"></span>
             </label>
             <button
               type="submit"
@@ -114,20 +122,26 @@
             <label for="image-link" class="modal__label"
               >Image link
               <input
+                required
                 id="image-link"
-                type="text"
+                type="url"
                 class="modal__input"
                 placeholder="Paste a link to the picture"
               />
+              <span id="image-link-error" class="modal__error"></span>
             </label>
             <label for="modal__caption" class="modal__label"
               >Caption
               <input
+                required
+                minlength="2"
+                maxlength="30"
                 id="modal__caption"
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
               />
+              <span id="modal__caption-error" class="modal__error"></span>
             </label>
             <button
               type="submit"
@@ -151,6 +165,7 @@
         <p class="modal__caption"></p>
       </div>
     </div>
+    <script defer src="./scripts/validation.js"></script>
     <script defer src="./scripts/index.js"></script>
   </body>
 </html>

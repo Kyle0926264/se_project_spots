@@ -144,6 +144,12 @@
   cursor: pointer;
 }
 
+.modal__error {
+  display: block;
+  color:  #FF0000B2;
+  opacity: 70%;
+}
+
 .modal__submit-btn {
   width: 156px;
   padding: 18px 0;
