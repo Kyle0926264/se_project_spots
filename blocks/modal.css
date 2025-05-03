@@ -139,6 +139,10 @@
   line-height: 1px;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 .modal__input:hover {
   border: 1px solid rgba(33, 33, 33, 1);
   cursor: pointer;
@@ -160,6 +164,12 @@
   line-height: 16px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.modal__submit-btn_disabled {
+  background-color: #212121;
+  opacity: 50%;
+  cursor: not-allowed;
 }
 
 .modal__submit-btn:hover {

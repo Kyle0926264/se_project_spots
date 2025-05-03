@@ -87,6 +87,15 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
+  evt.target.reset();
+  
+  // Get all the inputs and the submit button
+  const inputs = Array.from(evt.target.querySelectorAll('.modal__input'));
+  const submitButton = evt.target.querySelector('.modal__submit-btn');
+  
+  // Update button state
+  toggleButtonState(inputs, submitButton);
+  
   closePopup(editModal);
 }
 
@@ -97,6 +106,11 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   closePopup(newPostModal);
   evt.target.reset();
+
+  // Get the submit button
+  const submitButton = evt.target.querySelector('.modal__submit-btn');
+  // Disable the submit button after reset
+  toggleButtonState(Array.from(evt.target.querySelectorAll('.modal__input')), submitButton);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -107,7 +121,26 @@ profileEditButton.addEventListener("click", () => {
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(modal));
+  button.addEventListener("click", () => {
+    // Get the form inside this modal
+    const form = modal.querySelector("form");
+    if (form) {
+      form.reset(); // Reset the form
+      
+      // Clear error messages
+      const errorMessages = form.querySelectorAll('.modal__error');
+      errorMessages.forEach(errorMessage => {
+        errorMessage.textContent = '';
+      });
+      
+      // Remove error styling from inputs
+      const inputs = form.querySelectorAll('.modal__input');
+      inputs.forEach(input => {
+        input.classList.remove('modal__input_type_error');
+      });
+    }
+    closePopup(modal);
+  });
 });
 
 newPostButton.addEventListener("click", () => openPopup(newPostModal));
