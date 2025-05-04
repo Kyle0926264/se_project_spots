@@ -25,6 +25,7 @@ const initialCards = [
   },
 ];
 
+const modals = document.querySelectorAll('.modal');
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const editModal = document.querySelector("#edit-modal");
 const editModalCloseBtn = document.querySelector("#modal__close-btn");
@@ -151,4 +152,21 @@ newCardFormElement.addEventListener("submit", handleAddCardSubmit);
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardsList.append(cardElement);
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+      const openedModal = document.querySelector('.modal_opened');
+      if (openedModal) {
+          closePopup(openedModal);
+      }
+  }
+});
+
+modals.forEach((modal) => {
+  modal.addEventListener('click', function(event) {
+      if (event.target === event.currentTarget) {
+          closePopup(modal);
+      }
+  });
 });
