@@ -1,3 +1,5 @@
+import { settings, resetValidation, disableButton, enableButton } from './validation.js';
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -30,12 +32,12 @@ const profileEditButton = document.querySelector(".profile__edit-btn");
 const editModal = document.querySelector("#edit-modal");
 const editModalCloseBtn = document.querySelector("#modal__close-btn");
 const profileName = document.querySelector(".profile__name");
-const editModalNameInput = document.querySelector("#profile-name-input");
+const editFormElement = document.forms["edit-modal-form"];
+const editModalNameInput = editFormElement.elements['profile-name'];
 const profileDescription = document.querySelector(".profile__description");
 const editModalDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const editFormElement = document.forms["edit-modal-form"];
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
 const newPostModal = document.querySelector("#new__modal_card");
@@ -78,24 +80,25 @@ function getCardElement(data) {
 
 function openPopup(popup) {
   popup.classList.add("modal_opened");
+  document.addEventListener('keydown', handleEscape); 
 }
 
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
+  document.removeEventListener('keydown', handleEscape);
 }
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
-  evt.target.reset();
   
   // Get all the inputs and the submit button
   const inputs = Array.from(evt.target.querySelectorAll('.modal__input'));
-  const submitButton = evt.target.querySelector('.modal__submit-btn');
-  
+  const submitButton = evt.submitter;  
   // Update button state
-  toggleButtonState(inputs, submitButton);
+  
+  disableButton(evt.submitter, settings);
   
   closePopup(editModal);
 }
@@ -111,10 +114,12 @@ function handleAddCardSubmit(evt) {
   // Get the submit button
   const submitButton = evt.target.querySelector('.modal__submit-btn');
   // Disable the submit button after reset
-  toggleButtonState(Array.from(evt.target.querySelectorAll('.modal__input')), submitButton);
+  disableButton(submitButton, settings);
 }
 
 profileEditButton.addEventListener("click", () => {
+  const inputList = Array.from(editFormElement.querySelectorAll(settings.inputSelector));
+  resetValidation(inputList, settings);
   openPopup(editModal);
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
@@ -123,23 +128,6 @@ profileEditButton.addEventListener("click", () => {
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => {
-    // Get the form inside this modal
-    const form = modal.querySelector("form");
-    if (form) {
-      form.reset(); // Reset the form
-      
-      // Clear error messages
-      const errorMessages = form.querySelectorAll('.modal__error');
-      errorMessages.forEach(errorMessage => {
-        errorMessage.textContent = '';
-      });
-      
-      // Remove error styling from inputs
-      const inputs = form.querySelectorAll('.modal__input');
-      inputs.forEach(input => {
-        input.classList.remove('modal__input_type_error');
-      });
-    }
     closePopup(modal);
   });
 });
@@ -154,14 +142,12 @@ initialCards.forEach((cardData) => {
   cardsList.append(cardElement);
 });
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-      const openedModal = document.querySelector('.modal_opened');
-      if (openedModal) {
-          closePopup(openedModal);
-      }
+function handleEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedModal = document.querySelector('.modal_opened');
+    closePopup(openedModal);
   }
-});
+}
 
 modals.forEach((modal) => {
   modal.addEventListener('click', function(event) {

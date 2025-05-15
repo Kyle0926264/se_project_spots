@@ -13,6 +13,11 @@
   border-radius: 8px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+  cursor: pointer;
+}
+
 .card__title {
   margin: 0;
   font-size: 20px;
